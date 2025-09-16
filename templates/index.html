@@ -16,9 +16,9 @@
         .success { color: #34a853; }
         .error { color: #ea4335; }
         .hidden { display: none; }
-        #typing-challenge pre {
-            text-align: left;
-            white-space: pre-wrap;
+        /* CHANGED: Styling for the new prose paragraph */
+        #typing-challenge #poem-text {
+            text-align: justify;
             font-size: 0.9rem;
             max-height: 200px;
             overflow-y: auto;
@@ -26,6 +26,7 @@
             padding: 1rem;
             border-radius: 8px;
             border: 1px solid #ddd;
+            line-height: 1.6;
         }
         #typing-challenge textarea {
             width: 95%;
@@ -51,35 +52,8 @@
             <h2>Typing Challenge</h2>
             <p>Please type the text below. We will collect sensor data while you type.</p>
             <div id="typing-challenge">
-                <pre id="poem-text">Because I could not stop for Death –
-He kindly stopped for me –
-The Carriage held but just Ourselves –
-And Immortality.
-
-We slowly drove – He knew no haste
-And I had put away
-My labor and my leisure too,
-For His Civility –
-
-We passed the School, where Children strove
-At Recess – in the Ring –
-We passed the Fields of Gazing Grain –
-We passed the Setting Sun –
-
-Or rather – He passed Us –
-The Dews drew quivering and Chill –
-For only Gossamer, my Gown –
-My Tippet – only Tulle –
-
-We paused before a House that seemed
-A Swelling of the Ground –
-The Roof was scarcely visible –
-The Cornice – in the Ground –
-
-Since then – 'tis Centuries – and yet
-Feels shorter than the Day
-I first surmised the Horses' Heads
-Were toward Eternity –</pre>
+                <!-- CHANGED: Replaced <pre> with <p> and formatted text as a single paragraph -->
+                <p id="poem-text">Because I could not stop for Death – He kindly stopped for me – The Carriage held but just Ourselves – And Immortality. We slowly drove – He knew no haste And I had put away My labor and my leisure too, For His Civility – We passed the School, where Children strove At Recess – in the Ring – We passed the Fields of Gazing Grain – We passed the Setting Sun – Or rather – He passed Us – The Dews drew quivering and Chill – For only Gossamer, my Gown – My Tippet – only Tulle – We paused before a House that seemed A Swelling of the Ground – The Roof was scarcely visible – The Cornice – in the Ground – Since then – 'tis Centuries – and yet Feels shorter than the Day I first surmised the Horses' Heads Were toward Eternity –</p>
                 <textarea id="typingInput" placeholder="Start typing here..."></textarea>
             </div>
         </div>
@@ -137,10 +111,10 @@ Were toward Eternity –</pre>
             
             window.addEventListener('devicemotion', handleMotion);
             
-            statusDiv.innerText = 'Collecting motion data for 10 seconds while you type...';
+            statusDiv.innerText = 'Collecting motion data for 60 seconds while you type...';
 
-            // Stop collection after 10 seconds
-            setTimeout(() => stopCollection(username), 10000);
+            // Stop collection after 60 seconds
+            setTimeout(() => stopCollection(username), 60000);
         }
 
         function handleMotion(event) {
